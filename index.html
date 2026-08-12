@@ -741,12 +741,35 @@
       justify-content: space-between;
     }
 
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 10px;
+    }
+
     .project-number {
       color: var(--cyan);
 
       font: 11px monospace;
 
       letter-spacing: 0.15em;
+    }
+
+    .project-time {
+      padding: 4px 10px;
+
+      border: 1px solid rgba(84, 246, 255, 0.2);
+      border-radius: 5px;
+
+      color: #8a99b8;
+
+      font: 10px monospace;
+
+      letter-spacing: 0.08em;
+
+      white-space: nowrap;
     }
 
     .project-big-number {
@@ -857,6 +880,115 @@
       margin-top: 6px;
 
       color: var(--muted);
+    }
+
+    /* =========================
+       STATUS BANNER
+    ========================= */
+
+    .status-banner {
+      position: relative;
+
+      padding: 45px 35px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--line);
+      border-radius: 18px;
+
+      background: linear-gradient(135deg,
+          rgba(84, 246, 255, 0.04),
+          rgba(184, 108, 255, 0.035));
+
+      backdrop-filter: blur(15px);
+
+      transition: 0.3s;
+    }
+
+    .status-banner:hover {
+      border-color: rgba(84, 246, 255, 0.25);
+    }
+
+    .status-banner::before {
+      content: "";
+
+      position: absolute;
+
+      width: 200px;
+      height: 200px;
+
+      right: -100px;
+      top: -100px;
+
+      border-radius: 50%;
+
+      background: rgba(84, 246, 255, 0.06);
+
+      filter: blur(40px);
+    }
+
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-bottom: 18px;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow: 0 0 10px rgba(85, 246, 165, 0.5);
+
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      50% {
+        box-shadow: 0 0 20px rgba(85, 246, 165, 0.8);
+      }
+    }
+
+    .status-indicator span:not(.en) {
+      color: var(--text);
+
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .status-label-en {
+      color: #68758a !important;
+
+      font: 10px monospace !important;
+
+      letter-spacing: 0.1em;
+    }
+
+    .status-text {
+      max-width: 680px;
+
+      color: var(--muted);
+
+      font-size: 16px;
+
+      line-height: 1.9;
+    }
+
+    .status-text .en {
+      display: block;
+
+      margin-top: 6px;
+
+      color: #657188;
+
+      font-size: 12px;
+
+      line-height: 1.7;
     }
 
     /* =========================
@@ -1034,10 +1166,6 @@
             <span data-i18n="nav.projects">项目</span>
           </a>
 
-          <a href="#experience">
-            <span data-i18n="nav.experience">经历</span>
-          </a>
-
           <a href="#contact">
             <span data-i18n="nav.contact">联系</span>
           </a>
@@ -1086,12 +1214,9 @@
 
 
           <h1>
-            HELLO,
+            <span data-i18n="hero.greeting">你好，我是</span>
             <br>
-            I'M
-            <span class="gradient">
-              ZHANG.
-            </span>
+            <span class="gradient" data-i18n="hero.name">张亮。</span>
           </h1>
 
 
@@ -1109,7 +1234,8 @@
               focused on React, JavaScript,
               cross-platform applications and real-time interaction.
               I enjoy turning complex problems into
-              clean engineering solutions.
+              clean engineering solutions — and
+              building them into truly useful products.
             </span>
 
           </p>
@@ -1181,35 +1307,35 @@
               <span class="cyan">
                 React
               </span>
-              ................. EXPERT
+              ................. 日常使用
             </div>
 
             <div>
               <span class="cyan">
                 JavaScript
               </span>
-              ............ ADVANCED
+              ............ 日常使用
             </div>
 
             <div>
               <span class="cyan">
                 WebSocket
               </span>
-              ............. ADVANCED
+              ............. 项目中使用过
             </div>
 
             <div>
               <span class="cyan">
                 Electron / Cordova
               </span>
-              .... INTERMEDIATE
+              .... 项目中使用过
             </div>
 
             <div>
               <span class="cyan">
                 Hardware Web
               </span>
-              .......... BUILDER
+              .......... 了解
             </div>
 
 
@@ -1387,11 +1513,13 @@
 
             <div class="skills">
 
-              <span class="skill">JavaScript</span>
-              <span class="skill">TypeScript</span>
               <span class="skill">React</span>
               <span class="skill">Redux</span>
               <span class="skill">React Router</span>
+              <span class="skill">Node</span>
+              <span class="skill">Vue</span>
+              <span class="skill">JavaScript</span>
+              <span class="skill">TypeScript</span>
               <span class="skill">HTML / CSS</span>
               <span class="skill">Webpack</span>
               <span class="skill">Electron</span>
@@ -1467,8 +1595,9 @@
 
             <div>
 
-              <div class="project-number">
-                CROSS-PLATFORM
+              <div class="project-meta">
+                <span class="project-number">CROSS-PLATFORM</span>
+                <span class="project-time">2024 — NOW</span>
               </div>
 
 
@@ -1529,8 +1658,9 @@
 
             <div>
 
-              <div class="project-number">
-                REAL-TIME
+              <div class="project-meta">
+                <span class="project-number">REAL-TIME</span>
+                <span class="project-time">2024 — NOW</span>
               </div>
 
 
@@ -1592,8 +1722,9 @@
 
             <div>
 
-              <div class="project-number">
-                INTERACTION
+              <div class="project-meta">
+                <span class="project-number">INTERACTION</span>
+                <span class="project-time">2024 — NOW</span>
               </div>
 
 
@@ -1622,7 +1753,8 @@
                   Implemented joystick,
                   multi-touch, device orientation
                   and sensor visualization,
-                  focusing on event mapping and state synchronization.
+                  focusing on event mapping, state synchronization
+                  and interaction experience across different devices.
                 </span>
 
               </p>
@@ -1653,8 +1785,9 @@
 
             <div>
 
-              <div class="project-number">
-                EXPERIMENTS
+              <div class="project-meta">
+                <span class="project-number">EXPERIMENTS</span>
+                <span class="project-time">SIDE PROJECTS</span>
               </div>
 
 
@@ -1674,16 +1807,17 @@
               <p>
 
                 <span data-i18n="project4.description">
-                  持续开发音乐文件整理、
-                  相机参数推荐、3D 粒子交互等个人项目，
+                  AI 聊天窗口、语音识别、照片识别、
+                  3D 粒子交互等个人项目，
                   用实际作品验证新技术与产品想法。
                 </span>
 
                 <span class="en">
                   Exploring personal products such as
-                  music file organization,
-                  camera parameter recommendation
-                  and interactive 3D particle systems.
+                  AI chat with voice and photo recognition,
+                  3D particle interaction, and more —
+                  validating new tech and product ideas
+                  through real projects.
                 </span>
 
               </p>
@@ -1710,174 +1844,32 @@
 
 
     <!-- =========================
-     EXPERIENCE
+     STATUS
 ========================= -->
 
-    <section id="experience">
+    <section id="status">
 
       <div class="container">
 
+        <div class="status-banner reveal">
 
-        <div class="section-header reveal">
-
-          <div class="section-number">
-            03 / EXPERIENCE
+          <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span data-i18n="status.label">当前方向</span>
+            <span class="en status-label-en">CURRENT FOCUS</span>
           </div>
 
-
-          <div class="section-title">
-
-            <span data-i18n="experience.title">
-              我的经历。
+          <p class="status-text">
+            <span data-i18n="status.text">
+              从 Web 到 Desktop 再到 Hardware ——
+              持续探索前端与智能硬件的交汇地带。
             </span>
-
-            <br>
-
-            <span class="gradient">
-              THE JOURNEY.
+            <span class="en">
+              From Web to Desktop to Hardware —
+              exploring the intersection of frontend
+              and embedded systems.
             </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="card reveal">
-
-          <div class="timeline">
-
-
-            <div class="timeline-item">
-
-              <div class="timeline-time">
-                2024 — NOW
-              </div>
-
-
-              <div>
-
-                <h3>
-
-                  <span data-i18n="experience.item1.title">
-                    前端开发
-                  </span>
-
-                  <span class="en">
-                    Frontend Development
-                  </span>
-
-                </h3>
-
-
-                <p>
-
-                  <span data-i18n="experience.item1.description">
-                    持续参与 React、跨端应用、
-                    智能硬件控制平台等项目开发，
-                    积累真实业务工程经验。
-                  </span>
-
-                  <span class="en">
-                    Working on React,
-                    cross-platform applications
-                    and smart hardware platforms,
-                    gaining hands-on engineering experience.
-                  </span>
-
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-              <div class="timeline-time">
-                FOCUS
-              </div>
-
-
-              <div>
-
-                <h3>
-
-                  <span data-i18n="experience.item2.title">
-                    WEB → DESKTOP → HARDWARE
-                  </span>
-
-                  <span class="en">
-                    From Web to Desktop and Hardware
-                  </span>
-
-                </h3>
-
-
-                <p>
-
-                  <span data-i18n="experience.item2.description">
-                    从传统 Web 开发延伸到
-                    Electron、Cordova、WebSocket
-                    与智能硬件通信场景。
-                  </span>
-
-                  <span class="en">
-                    Expanding from traditional web development
-                    into Electron, Cordova, WebSocket
-                    and hardware communication.
-                  </span>
-
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-              <div class="timeline-time">
-                NEXT
-              </div>
-
-
-              <div>
-
-                <h3>
-
-                  <span data-i18n="experience.item3.title">
-                    寻找优秀的团队
-                  </span>
-
-                  <span class="en">
-                    Looking for a Great Team
-                  </span>
-
-                </h3>
-
-
-                <p>
-
-                  <span data-i18n="experience.item3.description">
-                    希望进入重视工程质量、
-                    产品体验与技术成长的团队，
-                    在真实业务中持续提升。
-                  </span>
-
-                  <span class="en">
-                    Looking for a team that values
-                    engineering quality, product experience
-                    and continuous technical growth.
-                  </span>
-
-                </p>
-
-              </div>
-
-            </div>
-
-
-          </div>
+          </p>
 
         </div>
 
@@ -1897,7 +1889,7 @@
         <div class="contact reveal">
 
           <div class="section-number">
-            04 / CONTACT
+            03 / CONTACT
           </div>
 
 
@@ -1932,12 +1924,12 @@
 
           <div class="contact-buttons">
 
-            <a class="button button-primary" href="mailto:your-email@example.com">
+            <a class="button button-primary" href="mailto:15270485008@163.com">
               EMAIL ME ↗
             </a>
 
 
-            <a class="button" href="https://github.com/" target="_blank" rel="noopener">
+            <a class="button" href="https://github.com/Bob-Cheung/gestureParticleShapes" target="_blank" rel="noopener">
               GITHUB ↗
             </a>
 
@@ -1984,14 +1976,19 @@
         "nav.about": "关于",
         "nav.skills": "技能",
         "nav.projects": "项目",
-        "nav.experience": "经历",
         "nav.contact": "联系",
+
+        "hero.greeting":
+          "你好，我是",
+
+        "hero.name":
+          "张亮。",
 
         "hero.description":
           "我是张亮，一名专注于 React、JavaScript、跨端应用与实时交互的前端开发者。喜欢把复杂的问题拆解成清晰的工程方案，并把它做成真正好用的产品。",
 
         "hero.descriptionEn":
-          "I'm Zhang Liang, a frontend developer focused on React, JavaScript, cross-platform applications and real-time interaction. I enjoy turning complex problems into clean engineering solutions.",
+          "I'm Zhang Liang, a frontend developer focused on React, JavaScript, cross-platform applications and real-time interaction. I enjoy turning complex problems into clean engineering solutions — and building them into truly useful products.",
 
         "hero.work":
           "探索我的项目 ↗",
@@ -2051,28 +2048,13 @@
           "个人产品探索",
 
         "project4.description":
-          "持续开发音乐文件整理、相机参数推荐、3D 粒子交互等个人项目，用实际作品验证新技术与产品想法。",
+          "AI 聊天窗口、语音识别、照片识别、3D 粒子交互等个人项目，用实际作品验证新技术与产品想法。",
 
-        "experience.title":
-          "我的经历。",
+        "status.label":
+          "当前方向",
 
-        "experience.item1.title":
-          "前端开发",
-
-        "experience.item1.description":
-          "持续参与 React、跨端应用、智能硬件控制平台等项目开发，积累真实业务工程经验。",
-
-        "experience.item2.title":
-          "WEB → DESKTOP → HARDWARE",
-
-        "experience.item2.description":
-          "从传统 Web 开发延伸到 Electron、Cordova、WebSocket 与智能硬件通信场景。",
-
-        "experience.item3.title":
-          "寻找优秀的团队",
-
-        "experience.item3.description":
-          "希望进入重视工程质量、产品体验与技术成长的团队，在真实业务中持续提升。",
+        "status.text":
+          "从 Web 到 Desktop 再到 Hardware —— 持续探索前端与智能硬件的交汇地带。",
 
         "contact.description":
           "如果你正在招聘前端开发，欢迎联系我。期待一起创造有价值的产品。",
@@ -2087,14 +2069,13 @@
         "nav.about": "ABOUT",
         "nav.skills": "SKILLS",
         "nav.projects": "PROJECTS",
-        "nav.experience": "EXPERIENCE",
         "nav.contact": "CONTACT",
 
         "hero.description":
-          "I'm Zhang Liang, a frontend developer focused on React, JavaScript, cross-platform applications and real-time interaction. I enjoy turning complex problems into clean engineering solutions.",
+          "I'm Zhang Liang, a frontend developer focused on React, JavaScript, cross-platform applications and real-time interaction. I enjoy turning complex problems into clean engineering solutions — and building them into truly useful products.",
 
         "hero.descriptionEn":
-          "我是一名专注于 React、JavaScript、跨端应用与实时交互的前端开发者，喜欢把复杂的问题拆解成清晰的工程方案。",
+          "我是一名专注于 React、JavaScript、跨端应用与实时交互的前端开发者，喜欢把复杂的问题拆解成清晰的工程方案，并把它做成真正好用的产品。",
 
         "hero.work":
           "EXPLORE MY WORK ↗",
@@ -2148,34 +2129,19 @@
           "Interactive Control Interface",
 
         "project3.description":
-          "Implemented joystick, multi-touch, device orientation and sensor visualization, focusing on event mapping and state synchronization.",
+          "Implemented joystick, multi-touch, device orientation and sensor visualization, focusing on event mapping, state synchronization and interaction experience across different devices.",
 
         "project4.title":
           "Personal Product Experiments",
 
         "project4.description":
-          "Exploring personal products such as music file organization, camera parameter recommendation and interactive 3D particle systems.",
+          "Exploring personal products such as AI chat with voice and photo recognition, 3D particle interaction, and more — validating new tech and product ideas through real projects.",
 
-        "experience.title":
-          "THE JOURNEY.",
+        "status.label":
+          "CURRENT FOCUS",
 
-        "experience.item1.title":
-          "Frontend Development",
-
-        "experience.item1.description":
-          "Working on React, cross-platform applications and smart hardware platforms, gaining hands-on engineering experience.",
-
-        "experience.item2.title":
-          "From Web to Desktop and Hardware",
-
-        "experience.item2.description":
-          "Expanding from traditional web development into Electron, Cordova, WebSocket and hardware communication.",
-
-        "experience.item3.title":
-          "Looking for a Great Team",
-
-        "experience.item3.description":
-          "Looking for a team that values engineering quality, product experience and continuous technical growth.",
+        "status.text":
+          "From Web to Desktop to Hardware — exploring the intersection of frontend and embedded systems.",
 
         "contact.description":
           "If you're looking for a frontend developer, feel free to contact me. Let's build something meaningful together.",
